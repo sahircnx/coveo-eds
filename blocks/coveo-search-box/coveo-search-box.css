@@ -1,0 +1,5 @@
+/* coveo-search-box styles */
+.coveo-search-box {
+  display: block;
+  margin-bottom: var(--atomic-layout-spacing-y, 1rem);
+}
