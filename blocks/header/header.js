@@ -19,7 +19,7 @@ export default async function decorate(block) {
   logo.className = 'mchp-logo';
   logo.innerHTML = `<a href="/" aria-label="Microchip Homepage">
       <div class="mchp-logo-text">
-         <span style="color:var(--mchp-red);font-weight:900;margin-right:2px;">M</span>ICROCHIP
+         <span style="color:var(--mchp-red);font-weight:900;margin-right:2px;">COVEO</span>EDS
       </div>
   </a>`;
 
@@ -64,7 +64,7 @@ export default async function decorate(block) {
   // 2. Main Nav
   const mainNav = document.createElement('nav');
   mainNav.className = 'mchp-main-nav';
-  
+
   const navItems = [
     'Products',
     'Applications',
