@@ -48,6 +48,18 @@ export function buildCoveoSearchLayout(main) {
   const coveoBlocks = main.querySelectorAll('.coveo-search-box, .coveo-facets, .coveo-results, .coveo-config');
   if (coveoBlocks.length === 0) return;
 
+  const loader = document.createElement('div');
+  loader.className = 'coveo-search-loader';
+  
+  // We want to keep this inside a valid EDS section. 
+  const firstBlock = coveoBlocks[0];
+  const sectionWrapper = firstBlock.closest('.section');
+  if (sectionWrapper && sectionWrapper !== main) {
+    sectionWrapper.prepend(loader);
+  } else {
+    main.prepend(loader);
+  }
+
   // Create the scaffolding
   const searchInterface = document.createElement('atomic-search-interface');
   searchInterface.setAttribute('fields-to-include', '["snrating", "sncost"]');
@@ -107,9 +119,6 @@ export function buildCoveoSearchLayout(main) {
 
   // We want to keep this inside a valid EDS section. 
   // Let's create a wrapper div for the section, or reuse the first block's parent.
-  const firstBlock = coveoBlocks[0];
-  const sectionWrapper = firstBlock.closest('.section');
-
   if (sectionWrapper && sectionWrapper !== main) {
     sectionWrapper.prepend(searchInterface);
   } else {

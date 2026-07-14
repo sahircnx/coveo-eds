@@ -345,3 +345,28 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* Coveo loader */
+.coveo-search-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  width: 100%;
+}
+
+.coveo-search-loader::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--light-color);
+  border-top-color: var(--mchp-red);
+  border-radius: 50%;
+  animation: coveo-loader-spin 1s linear infinite;
+}
+
+@keyframes coveo-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

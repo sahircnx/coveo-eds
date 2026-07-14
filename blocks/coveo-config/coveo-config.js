@@ -33,10 +33,17 @@ export default function decorate(block) {
     const searchInterface = block.closest('atomic-search-interface') || document.querySelector('atomic-search-interface');
     
     if (searchInterface && config.accesstoken && config.organizationid) {
-      await searchInterface.initialize({
-        accessToken: config.accesstoken,
-        organizationId: config.organizationid,
-      });
+      try {
+        await searchInterface.initialize({
+          accessToken: config.accesstoken,
+          organizationId: config.organizationid,
+        });
+      } catch (e) {
+        console.error('Coveo initialization failed', e);
+      } finally {
+        const loader = document.querySelector('.coveo-search-loader');
+        if (loader) loader.remove();
+      }
       searchInterface.executeFirstSearch();
     }
   }, 0);
